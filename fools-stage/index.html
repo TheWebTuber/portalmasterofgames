@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean searchable library of books, authors, and series.">
+  <title>Fool's Stage | Library</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Fool's Stage library home">
+        <span class="brand-mark">FS</span>
+        <span>Fool's Stage</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#books">Books</a>
+        <a href="#authors">Authors</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Library</p>
+        <h1>Every story starts<br>with a little curiosity.</h1>
+        <p class="hero-text">Step into Fool's Stage. Browse the books, find your next read, and follow the road from the very beginning.</p>
+      </div>
+    </section>
+
+    <section class="library-section" id="books">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="eyebrow">Catalog</p>
+            <h2>On the shelves</h2>
+            <p class="section-text">The Fool's Stage trilogy, in reading order.</p>
+          </div>
+
+          <div class="library-tools" aria-label="Library search and filters">
+            <label class="field">
+              <span>Search</span>
+              <input id="search-input" type="search" placeholder="Title, author, genre..." autocomplete="off">
+            </label>
+
+            <label class="field">
+              <span>Author</span>
+              <select id="author-filter">
+                <option value="all">All authors</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Series</span>
+              <select id="series-filter">
+                <option value="all">All series</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="results-bar"><div class="results-line" id="results-line" role="status" aria-live="polite" aria-atomic="true"></div><button id="reset-filters" type="button" hidden>Clear filters</button></div>
+        <div class="book-grid" id="book-grid"></div>
+        <noscript><p>Browse the trilogy:</p><ol><li><a href="books/the-flip-side-of-knowledge/">The Flip Side of Knowledge</a></li><li><a href="books/burned-memories-and-made-up-apologies/">Burned Memories and Made-Up Apologies</a></li><li><a href="books/go-home/">Go Home...</a></li></ol></noscript>
+        <p class="empty-state" id="empty-state" hidden>No books found. Try a different search or filter.</p>
+      </div>
+    </section>
+
+    <section class="authors-section" id="authors">
+      <div class="container">
+        <div class="section-top simple">
+          <div>
+            <p class="eyebrow">Writers</p>
+            <h2>Authors</h2>
+            <p class="section-text">Meet the writers behind the stories.</p>
+          </div>
+        </div>
+
+        <div class="author-grid" id="author-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> Fool's Stage</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/catalog.js" defer></script>
+  <script src="js/index.js" defer></script>
+</body>
+</html>
