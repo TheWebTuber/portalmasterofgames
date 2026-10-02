@@ -5,15 +5,14 @@ const CONFIG = {
   discordUrl: "https://discord.gg/gYDWykzuzN",
 
   // Optional custom text used by the "Copy share message" button.
-  shareMessage:
-`You were passed an invitation to a long-running online D&D campaign.
+  shareMessage: `You were passed an invitation to a long-running online D&D campaign.
 
 Recurring campaign • Discord • UK-time schedule • YouTube livestreaming planned • currently seeking players and a volunteer DM.
 
 Read the full invitation here:
 {url}
 
-If it isn't for you but you know someone who genuinely fits, you're welcome to pass it onward.`
+If it isn't for you but you know someone who genuinely fits, you're welcome to pass it onward.`,
 };
 
 document.querySelectorAll("[data-discord-link]").forEach((link) => {

@@ -27,11 +27,31 @@ body {
   overflow-x: hidden;
   color: var(--text);
   background:
-    radial-gradient(circle at 50% -10%, rgba(244, 215, 139, 0.18), transparent 28rem),
-    radial-gradient(circle at 15% 12%, rgba(124, 31, 42, 0.34), transparent 26rem),
-    radial-gradient(circle at 85% 18%, rgba(58, 43, 86, 0.24), transparent 25rem),
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(244, 215, 139, 0.18),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 15% 12%,
+      rgba(124, 31, 42, 0.34),
+      transparent 26rem
+    ),
+    radial-gradient(
+      circle at 85% 18%,
+      rgba(58, 43, 86, 0.24),
+      transparent 25rem
+    ),
     linear-gradient(180deg, #12070b 0%, #08070a 42%, #0d0b10 100%);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
   line-height: 1.6;
 }
 
@@ -42,8 +62,18 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(124, 31, 42, 0.26), transparent 18%, transparent 82%, rgba(124, 31, 42, 0.26)),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 84px);
+    linear-gradient(
+      90deg,
+      rgba(124, 31, 42, 0.26),
+      transparent 18%,
+      transparent 82%,
+      rgba(124, 31, 42, 0.26)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0 1px,
+      transparent 1px 84px
+    );
 }
 
 a {
@@ -98,7 +128,11 @@ select {
   border: 1px solid rgba(244, 215, 139, 0.58);
   border-radius: 50%;
   background:
-    radial-gradient(circle at 35% 25%, rgba(244, 215, 139, 0.24), transparent 38%),
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(244, 215, 139, 0.24),
+      transparent 38%
+    ),
     rgba(255, 248, 234, 0.06);
   color: var(--text);
   letter-spacing: 0;
@@ -131,7 +165,12 @@ select {
   width: min(100%, var(--max-width));
   height: 1px;
   margin: clamp(2rem, 5vw, 4rem) auto 0;
-  background: linear-gradient(90deg, transparent, rgba(244, 215, 139, 0.48), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(244, 215, 139, 0.48),
+    transparent
+  );
 }
 
 .eyebrow,
@@ -190,7 +229,11 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(255, 248, 234, 0.09), rgba(255, 248, 234, 0.035)),
+    linear-gradient(
+      180deg,
+      rgba(255, 248, 234, 0.09),
+      rgba(255, 248, 234, 0.035)
+    ),
     var(--panel);
   box-shadow: var(--shadow);
 }
@@ -275,7 +318,10 @@ section {
   flex-direction: column;
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .book-card:hover,
@@ -283,7 +329,11 @@ section {
   transform: translateY(-4px);
   border-color: rgba(244, 215, 139, 0.56);
   background:
-    linear-gradient(180deg, rgba(255, 248, 234, 0.13), rgba(255, 248, 234, 0.05)),
+    linear-gradient(
+      180deg,
+      rgba(255, 248, 234, 0.13),
+      rgba(255, 248, 234, 0.05)
+    ),
     var(--panel-strong);
 }
 
@@ -347,7 +397,15 @@ section {
   display: block;
   margin-bottom: 0.75rem;
   color: var(--gold-bright);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -523,15 +581,65 @@ section {
 }
 
 /* Catalog controls and accessible navigation */
-html { scroll-padding-top: 6rem; }
-.field { min-width: 0; }
-.hero h1 { font-size: clamp(2.7rem, 6.5vw, 5.5rem); line-height: 1.05; }
-.hero-text { max-width: 38rem; }
-.results-bar { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-#reset-filters { color: var(--gold-bright); border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: .45rem .8rem; cursor: pointer; }
-.cover img { z-index: 3; }
-:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 4px; }
-.skip-link { position: fixed; top: -10rem; left: 1rem; z-index: 100; padding: .8rem; background: var(--bg); }
-.skip-link:focus { top: 1rem; }
-@media (max-width: 760px) { .library-tools { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .book-card { transition: none; } .book-card:hover, .book-card:focus-visible { transform: none; } }
+html {
+  scroll-padding-top: 6rem;
+}
+.field {
+  min-width: 0;
+}
+.hero h1 {
+  font-size: clamp(2.7rem, 6.5vw, 5.5rem);
+  line-height: 1.05;
+}
+.hero-text {
+  max-width: 38rem;
+}
+.results-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#reset-filters {
+  color: var(--gold-bright);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+}
+.cover img {
+  z-index: 3;
+}
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  top: -10rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.8rem;
+  background: var(--bg);
+}
+.skip-link:focus {
+  top: 1rem;
+}
+@media (max-width: 760px) {
+  .library-tools {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .book-card {
+    transition: none;
+  }
+  .book-card:hover,
+  .book-card:focus-visible {
+    transform: none;
+  }
+}

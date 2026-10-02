@@ -1,10 +1,141 @@
-.heading{width:var(--page);max-width:800px;text-align:center;margin:3rem auto 2.5rem}.heading h1{margin:0 0 1.25rem;letter-spacing:-.04em}.heading p{color:var(--muted);max-width:50ch;margin:auto}
-.page-links .container{width:var(--page);margin:0 auto}.about{display:grid;grid-template-columns:minmax(200px,.65fr) minmax(0,1.35fr);gap:2rem;align-items:start}
-.about-image{position:sticky;top:120px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}.about-image img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center}
-.about-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.info-box,.info-box1,.info-box2,.info-box3{padding:1.5rem;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:var(--radius);display:flex;flex-direction:column;min-width:0}
-.info-box1{border-top-color:#8da2ff}.info-box2{border-top-color:#d698ef}.info-box3{border-top-color:var(--gold)}.data{color:var(--muted)}.data strong{color:var(--text)}
-.linkY,.linkD,.linkI,.linkP{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 14px;border-radius:8px;text-decoration:none;background:var(--panel-raised);border:1px solid var(--line);font-size:.875rem;font-weight:650;margin-top:auto;text-align:center;overflow-wrap:anywhere}
-.linkY{color:#ff9298}.linkD{color:#a7b6ff}.linkI{color:#e2a9f4}.linkP{color:var(--gold)}.linkY:hover,.linkD:hover,.linkI:hover,.linkP:hover{border-color:currentColor}
-@media(max-width:1100px){.about{grid-template-columns:minmax(200px,.65fr) minmax(0,1.35fr)}.about-content{grid-template-columns:1fr}}
-@media(max-width:700px){.about{grid-template-columns:1fr;gap:1.5rem}.about-image{position:static;max-width:320px;width:100%;margin:auto}.about-image img{aspect-ratio:4/3}.heading{margin-top:2rem}.info-box,.info-box1,.info-box2,.info-box3{padding:1.25rem}}
+.heading {
+  width: var(--page);
+  max-width: 800px;
+  text-align: center;
+  margin: 3rem auto 2.5rem;
+}
+.heading h1 {
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.04em;
+}
+.heading p {
+  color: var(--muted);
+  max-width: 50ch;
+  margin: auto;
+}
+.page-links .container {
+  width: var(--page);
+  margin: 0 auto;
+}
+.about {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.65fr) minmax(0, 1.35fr);
+  gap: 2rem;
+  align-items: start;
+}
+.about-image {
+  position: sticky;
+  top: 120px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.about-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center;
+}
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.info-box,
+.info-box1,
+.info-box2,
+.info-box3 {
+  padding: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.info-box1 {
+  border-top-color: #8da2ff;
+}
+.info-box2 {
+  border-top-color: #d698ef;
+}
+.info-box3 {
+  border-top-color: var(--gold);
+}
+.data {
+  color: var(--muted);
+}
+.data strong {
+  color: var(--text);
+}
+.linkY,
+.linkD,
+.linkI,
+.linkP {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  font-size: 0.875rem;
+  font-weight: 650;
+  margin-top: auto;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.linkY {
+  color: #ff9298;
+}
+.linkD {
+  color: #a7b6ff;
+}
+.linkI {
+  color: #e2a9f4;
+}
+.linkP {
+  color: var(--gold);
+}
+.linkY:hover,
+.linkD:hover,
+.linkI:hover,
+.linkP:hover {
+  border-color: currentColor;
+}
+@media (max-width: 1100px) {
+  .about {
+    grid-template-columns: minmax(200px, 0.65fr) minmax(0, 1.35fr);
+  }
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .about-image {
+    position: static;
+    max-width: 320px;
+    width: 100%;
+    margin: auto;
+  }
+  .about-image img {
+    aspect-ratio: 4/3;
+  }
+  .heading {
+    margin-top: 2rem;
+  }
+  .info-box,
+  .info-box1,
+  .info-box2,
+  .info-box3 {
+    padding: 1.25rem;
+  }
+}

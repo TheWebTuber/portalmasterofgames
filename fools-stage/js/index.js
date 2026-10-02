@@ -5,7 +5,7 @@
     blue: "linear-gradient(145deg, #111827, #31506f, #090b10)",
     red: "linear-gradient(145deg, #2a0d12, #7c1f2a, #090609)",
     gray: "linear-gradient(145deg, #17171d, #5b5660, #08080b)",
-    green: "linear-gradient(145deg, #102018, #3f644d, #070b08)"
+    green: "linear-gradient(145deg, #102018, #3f644d, #070b08)",
   };
 
   const searchInput = document.getElementById("search-input");
@@ -17,7 +17,6 @@
   const resultsLine = document.getElementById("results-line");
 
   document.getElementById("year").textContent = new Date().getFullYear();
-
 
   function uniqueValues(key) {
     return [...new Set(books.map((book) => book[key]))].sort();
@@ -40,25 +39,42 @@
       book.bookNumber,
       book.genre,
       book.status,
-      book.description
+      book.description,
     ]
       .join(" ")
       .toLowerCase();
   }
 
   function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    return String(value).replace(
+      /[&<>"']/g,
+      (char) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[char],
+    );
   }
 
   function createBookCard(source) {
-    const book = Object.fromEntries(Object.entries(source).map(([key, value]) => [key, escapeHtml(value)]));
+    const book = Object.fromEntries(
+      Object.entries(source).map(([key, value]) => [key, escapeHtml(value)]),
+    );
     const card = document.createElement(source.pageLink ? "a" : "article");
     card.className = "book-card";
     if (book.pageLink) card.href = source.pageLink;
-    card.setAttribute("aria-label", `${book.pageLink ? "Open" : "Coming soon:"} ${source.title} by ${source.author}`);
+    card.setAttribute(
+      "aria-label",
+      `${book.pageLink ? "Open" : "Coming soon:"} ${source.title} by ${source.author}`,
+    );
 
     const coverStyle = coverColors[book.color] || coverColors.blue;
-    const statusClass = book.status.toLowerCase().includes("available") ? "available" : "coming";
+    const statusClass = book.status.toLowerCase().includes("available")
+      ? "available"
+      : "coming";
     const imageHtml = book.coverImage
       ? `<img src="${book.coverImage}" alt="" loading="lazy">`
       : "";
@@ -85,7 +101,9 @@
       </div>
     `;
 
-    card.querySelector("img")?.addEventListener("error", event => { event.target.hidden = true; });
+    card.querySelector("img")?.addEventListener("error", (event) => {
+      event.target.hidden = true;
+    });
     return card;
   }
 
@@ -95,9 +113,13 @@
     const selectedSeries = seriesFilter.value;
 
     const filteredBooks = books.filter((book) => {
-      const matchesSearch = query.split(/\s+/).every(word => bookSearchText(book).includes(word));
-      const matchesAuthor = selectedAuthor === "all" || book.author === selectedAuthor;
-      const matchesSeries = selectedSeries === "all" || book.series === selectedSeries;
+      const matchesSearch = query
+        .split(/\s+/)
+        .every((word) => bookSearchText(book).includes(word));
+      const matchesAuthor =
+        selectedAuthor === "all" || book.author === selectedAuthor;
+      const matchesSeries =
+        selectedSeries === "all" || book.series === selectedSeries;
       return matchesSearch && matchesAuthor && matchesSeries;
     });
 
@@ -105,7 +127,8 @@
     filteredBooks.forEach((book) => bookGrid.appendChild(createBookCard(book)));
 
     emptyState.hidden = filteredBooks.length !== 0;
-    document.getElementById("reset-filters").hidden = !query && selectedAuthor === "all" && selectedSeries === "all";
+    document.getElementById("reset-filters").hidden =
+      !query && selectedAuthor === "all" && selectedSeries === "all";
     resultsLine.textContent = `${filteredBooks.length} book${filteredBooks.length === 1 ? "" : "s"} shown`;
   }
 
@@ -140,10 +163,10 @@
   renderBooks();
   renderAuthors();
 
-  document.getElementById('reset-filters').addEventListener('click', () => {
-    searchInput.value = '';
-    authorFilter.value = 'all';
-    seriesFilter.value = 'all';
+  document.getElementById("reset-filters").addEventListener("click", () => {
+    searchInput.value = "";
+    authorFilter.value = "all";
+    seriesFilter.value = "all";
     renderBooks();
     searchInput.focus();
   });

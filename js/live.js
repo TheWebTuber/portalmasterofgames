@@ -1,6 +1,6 @@
 // Replace these with your API key and channel ID
-const API_KEY = 'AIzaSyBvpCwNhDR-PvJ02tJ2iJDekFc3R9-g5V0';
-const CHANNEL_ID = 'UCdOJvhjojFe3Z0yKeGEIERA'; // e.g., UCxxxxxx
+const API_KEY = "AIzaSyBvpCwNhDR-PvJ02tJ2iJDekFc3R9-g5V0";
+const CHANNEL_ID = "UCdOJvhjojFe3Z0yKeGEIERA"; // e.g., UCxxxxxx
 
 const subscribersEl = document.getElementById("subscribers");
 const viewsEl = document.getElementById("views");
@@ -45,7 +45,7 @@ function updateClock() {
   clockEl.textContent = now.toLocaleTimeString("nl-NL", {
     hour: "2-digit",
     minute: "2-digit",
-    second: "2-digit"
+    second: "2-digit",
   });
 }
 
@@ -102,9 +102,8 @@ async function fetchStats() {
 
     updatedEl.textContent = new Date().toLocaleTimeString("nl-NL", {
       hour: "2-digit",
-      minute: "2-digit"
+      minute: "2-digit",
     });
-
   } catch (error) {
     console.error("Error fetching YouTube data:", error);
     liveEl.textContent = "Error";
