@@ -10,7 +10,7 @@ window.libraryBooks = [
     description:
       "Fantasy mystery about an archive, a coin, and an impossible road.",
     coverImage: "",
-    pageLink: "books/the-flip-side-of-knowledge/index.html",
+    pageLink: "books/the-flip-side-of-knowledge/",
     color: "blue",
   },
   {
@@ -23,7 +23,7 @@ window.libraryBooks = [
     description:
       "A memory-focused fantasy mystery and the second Fool's Stage book.",
     coverImage: "",
-    pageLink: "books/burned-memories-and-made-up-apologies/index.html",
+    pageLink: "books/burned-memories-and-made-up-apologies/",
     color: "red",
   },
   {
@@ -35,7 +35,7 @@ window.libraryBooks = [
     status: "Available",
     description: "The final Fool's Stage book.",
     coverImage: "",
-    pageLink: "books/go-home/index.html",
+    pageLink: "books/go-home/",
     color: "gray",
   },
 ];

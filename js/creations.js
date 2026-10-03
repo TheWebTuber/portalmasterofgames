@@ -1,89 +1,47 @@
 (() => {
-  const gallery = document.getElementById("gallery");
-  if (!gallery) return;
-  const gifURL = (file) =>
-    new URL(`gifs/${encodeURIComponent(file)}`, location.href).href;
-  async function copy(url, button, info) {
-    try {
-      if (!navigator.clipboard?.writeText)
-        throw new Error("Clipboard unavailable");
-      await navigator.clipboard.writeText(url);
-      button.textContent = "Copied!";
-      setTimeout(() => {
-        button.textContent = "Copy link";
-      }, 1800);
-    } catch {
-      let input = info.querySelector(".copy-fallback");
-      if (!input) {
-        input = document.createElement("input");
-        input.className = "copy-fallback";
-        input.readOnly = true;
-        input.setAttribute("aria-label", "GIF link: select and copy");
-        info.append(input);
-      }
-      input.value = url;
-      input.focus();
-      input.select();
-      button.textContent = "Select and copy the link";
-    }
-  }
-  fetch("gifs.json")
-    .then((response) => {
-      if (!response.ok) throw new Error("Manifest unavailable");
-      return response.json();
-    })
-    .then((files) => {
-      if (!Array.isArray(files)) throw new Error("Invalid GIF list");
-      gallery.replaceChildren();
-      files.forEach((file) => {
-        if (
-          typeof file !== "string" ||
-          /[\/\\]/.test(file) ||
-          !/\.gif$/i.test(file)
-        )
-          return;
-        const name = file
-          .replace(/^@PMOG\(PortalMasterOfGames\)_/, "")
-          .replace(/_\d{4}-\d{2}-\d{2}-.*\.gif$/i, "")
-          .replace(/\.gif$/i, "");
-        const card = document.createElement("article");
-        card.className = "card";
-        const img = document.createElement("img");
-        img.src = gifURL(file);
-        img.alt = `${name} animation`;
-        img.loading = "lazy";
-        img.decoding = "async";
-        img.addEventListener("error", () => {
-          const placeholder = document.createElement("div");
-          placeholder.className = "asset-unavailable";
-          placeholder.textContent = "GIF preview unavailable";
-          img.replaceWith(placeholder);
-        });
-        const info = document.createElement("div");
-        info.className = "info";
-        const title = document.createElement("div");
-        title.className = "filename";
-        title.textContent = name;
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "share-btn";
-        button.textContent = "Copy link";
-        button.setAttribute("aria-label", `Copy link to ${name}`);
-        button.addEventListener("click", () =>
-          copy(gifURL(file), button, info),
-        );
-        info.append(title, button);
-        card.append(img, info);
-        gallery.append(card);
-      });
-      if (!gallery.children.length)
-        gallery.textContent = "No GIFs to show yet.";
-      gallery.setAttribute("aria-busy", "false");
-    })
-    .catch(() => {
-      gallery.classList.add("notice");
-      gallery.textContent =
-        "The GIF collection could not load. Please try again later.";
-      gallery.setAttribute("aria-busy", "false");
+  const tablist = document.getElementById("creation-tabs");
+  const panel = document.getElementById("projects-panel");
+  const heading = document.getElementById("projects-heading");
+  const count = document.getElementById("project-count");
+  if (!tablist || !panel || !heading || !count) return;
+  const tabs = [...tablist.querySelectorAll("[role=tab]")];
+  const cards = [...panel.querySelectorAll(".project-card")];
+  if (!tabs.length) return;
+
+  function select(tab) {
+    const category = tab.dataset.category;
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.setAttribute("aria-selected", String(selected));
+      item.tabIndex = selected ? 0 : -1;
     });
+    let visible = 0;
+    cards.forEach((card) => {
+      const categories = card.dataset.categories.split(/\s+/);
+      card.hidden = category !== "all" && !categories.includes(category);
+      if (!card.hidden) visible += 1;
+    });
+    heading.textContent = category === "all" ? "All creations" : tab.textContent;
+    count.textContent = `${visible} ${visible === 1 ? "collection" : "collections"}`;
+    panel.setAttribute("aria-labelledby", tab.id);
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => select(tab));
+    tab.addEventListener("keydown", (event) => {
+      let next;
+      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft") next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      select(tabs[next]);
+      tabs[next].focus();
+    });
+  });
+  panel.setAttribute("role", "tabpanel");
+  panel.tabIndex = 0;
+  select(tabs[0]);
+  tablist.hidden = false;
 })();
