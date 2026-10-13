@@ -28,7 +28,7 @@ jobs:
           node-version: "22"
 
       - name: Generate ICS calendar
-        run: node js/moon.ics.cjs
+        run: node js/moon-ics.cjs
 
       - name: Commit updated calendar
         run: |
