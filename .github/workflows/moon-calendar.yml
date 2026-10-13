@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - "js/calendar.js"
-      - "js/moon.ics.cjs"
+      - "js/moon-ics.cjs"
       - ".github/workflows/generate-moon-calendar.yml"
 
   workflow_dispatch:
