@@ -3,159 +3,273 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>Howling Hours · Gaming calendar</title>
+
     <meta
       name="description"
       content="Find a night to play. Gaming availability for the 2026–2027 AHA hunting season, in Amsterdam time."
     />
+
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23100c10'/%3E%3Cpath d='M16 4a12 12 0 0 0 0 24Z' fill='%23e34854'/%3E%3C/svg%3E"
     />
+
     <link rel="stylesheet" href="css/moon.css" />
+
     <script src="js/calendar.js" defer></script>
   </head>
+
   <body>
     <div class="stardust" aria-hidden="true"></div>
+
     <div class="shell">
+      <!-- SIDEBAR -->
       <aside class="sidebar">
-        <a class="brand" href="./"
-          ><span class="moon half" aria-hidden="true"></span> HOWLING HOURS</a
-        >
+        <a class="brand" href="./">
+          <span class="moon half" aria-hidden="true"></span>
+          HOWLING HOURS
+        </a>
+
         <div class="wolf-art" id="art">
           <div class="art-caption">WHEN THE PACK CAN PLAY</div>
         </div>
+
         <div class="intro">
           <p class="eyebrow">THE PACK’S CALENDAR</p>
-          <h1>Find me<br />under the<br /><em>red moon.</em></h1>
+
+          <h1>
+            Find me<br />
+            under the<br />
+            <em>red moon.</em>
+          </h1>
+
           <p>Out hunting. Back for the pack.</p>
         </div>
+
         <div class="weekly">
           <h2>The usual rhythm</h2>
+
           <dl>
             <div>
               <dt>Mon — Thu</dt>
               <dd>Unavailable</dd>
             </div>
+
             <div>
               <dt>Friday</dt>
               <dd>Free from 18:30</dd>
             </div>
+
             <div>
               <dt>Saturday</dt>
               <dd>All day &amp; night</dd>
             </div>
+
             <div>
               <dt>Sunday</dt>
               <dd>Until 23:00*</dd>
             </div>
+
             <div>
               <dt>AHA breaks</dt>
               <dd>Continuous free time</dd>
             </div>
           </dl>
         </div>
+
         <p class="timezone">
-          Europe / Amsterdam<br /><span
-            >*If Monday is also free, the night stays free.</span
-          >
+          Europe / Amsterdam<br />
+          <span>*If Monday is also free, the night stays free.</span>
         </p>
       </aside>
+
+      <!-- MAIN CONTENT -->
       <main>
+        <!-- HEADER -->
         <header class="main-header">
           <div>
             <p class="eyebrow">1 JAN 2026 — 5 SEP 2027</p>
             <h2>Plan a night with the pack.</h2>
           </div>
-          <span class="year-tag">HUNTING SEASON <b>26 / 27</b></span>
+
+          <span class="year-tag">
+            HUNTING SEASON
+            <b>26 / 27</b>
+          </span>
         </header>
 
+        <!-- CALENDAR -->
         <section class="calendar" aria-labelledby="month-title">
           <div class="calendar-toolbar">
             <div>
               <p class="eyebrow" id="month-summary"></p>
               <h2 id="month-title" aria-live="polite"></h2>
             </div>
+
             <div class="calendar-actions">
-              <label class="sr-only" for="month-select">Choose month</label
-              ><select id="month-select"></select
-              ><button id="today">Today</button
-              ><button id="previous" aria-label="Previous month">←</button
-              ><button id="next" aria-label="Next month">→</button>
+              <label class="sr-only" for="month-select">
+                Choose month
+              </label>
+
+              <select id="month-select"></select>
+
+              <button id="today" type="button">
+                Today
+              </button>
+
+              <button
+                id="previous"
+                type="button"
+                aria-label="Previous month"
+              >
+                ←
+              </button>
+
+              <button
+                id="next"
+                type="button"
+                aria-label="Next month"
+              >
+                →
+              </button>
             </div>
           </div>
+
           <div class="break-toolbar">
-            <label for="break-select"
-              >Jump to an AHA break<select id="break-select">
+            <label for="break-select">
+              Jump to an AHA break
+
+              <select id="break-select">
                 <option value="">Choose a break…</option>
-              </select></label
-            >
+              </select>
+            </label>
+
             <p id="break-summary" aria-live="polite"></p>
           </div>
+
           <div class="weekdays" aria-hidden="true">
-            <span>MON</span><span>TUE</span><span>WED</span><span>THU</span
-            ><span>FRI</span><span>SAT</span><span>SUN</span>
+            <span>MON</span>
+            <span>TUE</span>
+            <span>WED</span>
+            <span>THU</span>
+            <span>FRI</span>
+            <span>SAT</span>
+            <span>SUN</span>
           </div>
+
           <div
             id="calendar-grid"
             class="calendar-grid"
             aria-label="Choose a date"
           ></div>
+
           <div class="calendar-foot">
-            <span>Tap a date for the full hours and free stretch.</span
-            ><span>All times are Amsterdam local time.</span>
+            <span>
+              Tap a date for the full hours and free stretch.
+            </span>
+
+            <span>
+              All times are Amsterdam local time.
+            </span>
           </div>
         </section>
-        <section class="calendar-guide" aria-labelledby="legend-title">
-          <h2 id="legend-title">What everything means</h2>
+
+        <!-- CALENDAR LEGEND -->
+        <section
+          class="calendar-guide"
+          aria-labelledby="legend-title"
+        >
+          <h2 id="legend-title">
+            What everything means
+          </h2>
+
           <div class="legend">
-            <span
-              ><i class="moon half" aria-hidden="true"></i> Red half-moon · free
-              to play</span
-            ><span
-              ><i class="moon full" aria-hidden="true"></i> Full circle ·
-              hunting day (unavailable)</span
-            ><span
-              ><i class="gold" aria-hidden="true">✦</i> Gold star + gold border
-              · AHA break</span
-            >
+            <span>
+              <i class="moon half" aria-hidden="true"></i>
+              Red half-moon · free to play
+            </span>
+
+            <span>
+              <i class="moon full" aria-hidden="true"></i>
+              Full circle · hunting day (unavailable)
+            </span>
+
+            <span>
+              <i class="gold" aria-hidden="true">✦</i>
+              Gold star + gold border · AHA break
+            </span>
           </div>
+
           <p>
-            <strong>From 18:30</strong> = Friday evening starts the free
-            stretch. <strong>All day</strong> = free all day and through the
-            night. <strong>Until 23:00</strong> = the last free day before the
-            hunt resumes.
+            <strong>From 18:30</strong>
+            = Friday evening starts the free stretch.
+
+            <strong>All day</strong>
+            = free all day and through the night.
+
+            <strong>Until 23:00</strong>
+            = the last free day before the hunt resumes.
           </p>
+
           <p>
-            Consecutive weekends and holidays join together. If Monday is free,
-            Sunday stays fully free too. The gold outline marks your selected
-            date; an underlined date is today.
+            Consecutive weekends and holidays join together.
+            If Monday is free, Sunday stays fully free too.
+            The gold outline marks your selected date;
+            an underlined date is today.
           </p>
         </section>
+
+        <!-- SELECTED DAY DETAILS -->
         <section
           class="day-detail"
           aria-labelledby="selected-title"
           aria-live="polite"
         >
-          <div class="detail-moon" id="detail-icon" aria-hidden="true"></div>
+          <div
+            class="detail-moon"
+            id="detail-icon"
+            aria-hidden="true"
+          ></div>
+
           <div>
-            <p class="eyebrow" id="selected-date"></p>
+            <p
+              class="eyebrow"
+              id="selected-date"
+            ></p>
+
             <h2 id="selected-title"></h2>
+
             <p id="selected-reason"></p>
+
             <p id="selected-window"></p>
           </div>
-          <div class="detail-hours" id="selected-hours"></div>
+
+          <div
+            class="detail-hours"
+            id="selected-hours"
+          ></div>
         </section>
+
+        <!-- FULL ROSTER -->
         <details class="periods">
           <summary>
-            <span>Full roster · 2026–2027</span
-            ><span class="gold">Periods &amp; breaks +</span>
+            <span>
+              Full roster · 2026–2027
+            </span>
+
+            <span class="gold">
+              Periods &amp; breaks +
+            </span>
           </summary>
+
           <div class="table-wrap">
             <table>
               <caption class="sr-only">
                 AHA hunting periods and free periods for 2026–2027
               </caption>
+
               <thead>
                 <tr>
                   <th>Period</th>
@@ -163,21 +277,356 @@
                   <th>Gaming availability</th>
                 </tr>
               </thead>
+
               <tbody id="period-body"></tbody>
             </table>
           </div>
         </details>
+
+        <!-- CALENDAR SUBSCRIPTION -->
+        <section
+          class="calendar-guide"
+          aria-labelledby="subscribe-title"
+        >
+          <p class="eyebrow">
+            KEEP THE PACK CALENDAR
+          </p>
+
+          <h2 id="subscribe-title">
+            Subscribe to Howling Hours
+          </h2>
+
+          <p>
+            Add my gaming availability to your own calendar once.
+            When I update the schedule on this website,
+            the subscribed calendar will update automatically too.
+          </p>
+
+          <!-- SUBSCRIPTION URL -->
+          <div class="break-toolbar">
+            <label for="calendar-feed">
+              Calendar subscription link
+
+              <input
+                id="calendar-feed"
+                type="text"
+                value="https://pmog.creatorpromote.com/calendar/moon.ics"
+                readonly
+                aria-label="Howling Hours calendar subscription URL"
+                style="
+                  width: 100%;
+                  margin-top: 0.65rem;
+                  padding: 0.85rem 1rem;
+                  box-sizing: border-box;
+
+                  border-radius: 10px;
+                  border: 1px solid rgba(227, 72, 84, 0.55);
+
+                  background: rgba(255, 255, 255, 0.04);
+                  color: inherit;
+
+                  font: inherit;
+                "
+              />
+            </label>
+
+            <p
+              id="calendar-copy-status"
+              aria-live="polite"
+            ></p>
+          </div>
+
+          <!-- SUBSCRIPTION BUTTONS -->
+          <div
+            class="calendar-actions"
+            style="
+              margin-top: 1rem;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.75rem;
+            "
+          >
+            <button
+              id="copy-calendar-link"
+              type="button"
+            >
+              Copy calendar link
+            </button>
+
+            <a
+              href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl"
+              target="_blank"
+              rel="noopener"
+              style="
+                text-decoration: none;
+                display: inline-flex;
+              "
+            >
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  padding: 0.65rem 1rem;
+
+                  border: 1px solid rgba(227, 72, 84, 0.55);
+                  border-radius: 8px;
+
+                  color: inherit;
+                "
+              >
+                Open Google Calendar
+              </span>
+            </a>
+
+            <a
+              href="webcal://pmog.creatorpromote.com/calendar/moon.ics"
+              style="
+                text-decoration: none;
+                display: inline-flex;
+              "
+            >
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  padding: 0.65rem 1rem;
+
+                  border: 1px solid rgba(227, 72, 84, 0.55);
+                  border-radius: 8px;
+
+                  color: inherit;
+                "
+              >
+                Apple / Calendar App
+              </span>
+            </a>
+          </div>
+
+          <!-- SUBSCRIPTION INSTRUCTIONS -->
+          <details
+            class="periods"
+            style="margin-top: 1.5rem;"
+          >
+            <summary>
+              <span>
+                How to subscribe
+              </span>
+
+              <span class="gold">
+                Setup instructions +
+              </span>
+            </summary>
+
+            <div class="table-wrap">
+              <table>
+                <caption class="sr-only">
+                  Instructions for subscribing to the Howling Hours calendar
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th>Calendar</th>
+                    <th>Instructions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- GOOGLE -->
+                  <tr>
+                    <td>
+                      <strong>
+                        Google Calendar
+                      </strong>
+                    </td>
+
+                    <td>
+                      <strong>1.</strong>
+                      Press
+                      <em>Copy calendar link</em>
+                      above.
+                      <br />
+
+                      <strong>2.</strong>
+                      Press
+                      <em>Open Google Calendar</em>.
+                      <br />
+
+                      <strong>3.</strong>
+                      Find
+                      <em>Other calendars</em>
+                      on the left.
+                      <br />
+
+                      <strong>4.</strong>
+                      Press
+                      <em>+</em>
+                      and choose
+                      <em>From URL</em>.
+                      <br />
+
+                      <strong>5.</strong>
+                      Paste the copied calendar link.
+                      <br />
+
+                      <strong>6.</strong>
+                      Press
+                      <em>Add calendar</em>.
+                    </td>
+                  </tr>
+
+                  <!-- APPLE -->
+                  <tr>
+                    <td>
+                      <strong>
+                        Apple Calendar
+                      </strong>
+                    </td>
+
+                    <td>
+                      Press
+                      <em>Apple / Calendar App</em>
+                      above.
+
+                      Your device should offer to subscribe
+                      to the Howling Hours calendar.
+
+                      If it does not, copy the calendar URL
+                      and add it as a subscribed calendar manually.
+                    </td>
+                  </tr>
+
+                  <!-- OUTLOOK -->
+                  <tr>
+                    <td>
+                      <strong>
+                        Outlook
+                      </strong>
+                    </td>
+
+                    <td>
+                      Copy the calendar link above.
+
+                      In Outlook, look for
+                      <em>Add calendar</em>
+                      and then an option such as
+                      <em>Subscribe from web</em>
+                      or
+                      <em>From Internet</em>.
+
+                      Paste the calendar URL there.
+                    </td>
+                  </tr>
+
+                  <!-- OTHER -->
+                  <tr>
+                    <td>
+                      <strong>
+                        Other calendar apps
+                      </strong>
+                    </td>
+
+                    <td>
+                      Copy the calendar subscription link
+                      and look for an option such as
+                      <em>Subscribe by URL</em>,
+                      <em>Calendar URL</em>,
+                      <em>Internet calendar</em>,
+                      or
+                      <em>Web calendar</em>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <!-- IMPORTANT INFO -->
+          <p style="margin-top: 1rem;">
+            <strong>
+              Important:
+            </strong>
+
+            subscribe using the calendar URL instead of
+            importing the downloaded
+            <code>.ics</code>
+            file.
+
+            Importing creates a one-time copy.
+            Subscribing allows future schedule changes
+            to appear automatically.
+          </p>
+
+          <p style="opacity: 0.75;">
+            Google, Apple, Outlook and other calendar services
+            decide how often they refresh external calendars.
+
+            Changes may therefore take some time to appear after
+            I update the schedule.
+
+            The live Howling Hours website will always show
+            the newest availability first.
+          </p>
+        </section>
+
+        <!-- FOOTER -->
         <footer>
           <p>
-            A little roster for the pack. Hunting days are unavailable; AHA
-            breaks are time to play.
+            A little roster for the pack.
+            Hunting days are unavailable;
+            AHA breaks are time to play.
           </p>
+
           <p>
-            Plans can change. Times are in Europe/Amsterdam. Moon symbols show
-            availability, not real lunar phases.
+            Plans can change.
+            Times are in Europe/Amsterdam.
+            Moon symbols show availability,
+            not real lunar phases.
           </p>
         </footer>
       </main>
     </div>
+
+    <!-- COPY CALENDAR LINK -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const copyButton =
+          document.getElementById("copy-calendar-link");
+
+        const calendarInput =
+          document.getElementById("calendar-feed");
+
+        const status =
+          document.getElementById("calendar-copy-status");
+
+        if (!copyButton || !calendarInput || !status) {
+          return;
+        }
+
+        calendarInput.addEventListener("click", () => {
+          calendarInput.select();
+        });
+
+        copyButton.addEventListener("click", async () => {
+          const calendarUrl = calendarInput.value;
+
+          try {
+            await navigator.clipboard.writeText(calendarUrl);
+
+            status.textContent =
+              "Calendar subscription link copied!";
+          } catch (error) {
+            calendarInput.focus();
+            calendarInput.select();
+
+            status.textContent =
+              "Copy the selected calendar link manually.";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
