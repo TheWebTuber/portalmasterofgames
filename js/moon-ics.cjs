@@ -106,7 +106,7 @@ for (const w of windows.values()) {
     `DTSTAMP:${now}`,
     `DTSTART;TZID=Europe/Amsterdam:${compactDate(w.start, w.startTime)}`,
     `DTEND;TZID=Europe/Amsterdam:${compactDate(w.end, w.endTime)}`,
-    "SUMMARY:Portal is free to play",
+    "SUMMARY:The Wolf Is Free (Howling Hours)",
     `DESCRIPTION:${escapeICS(
       `Continuous gaming availability. Amsterdam time. ` +
       `See https://pmog.creatorpromote.com/moon for the live schedule.`
