@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#110817">
+  <meta name="description" content="Step inside the Wolf's Deck by Portal Master Of Games. Follow an enchanted spiral of wolf emotes and play a few free, mischievous card games.">
+  <meta property="og:title" content="The Wolf's Deck · A Little Luck, A Little Mischief">
+  <meta property="og:description" content="A magical card spiral and free, playful card mini-games from Portal Master Of Games.">
+  <meta property="og:type" content="website">
+  <title>The Wolf's Deck · PMOG Card Arcade</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/pack.css">
+  <script src="js/cards.js" defer></script>
+  <script src="js/games.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="The Wolf's Deck — top of page">
+        <span class="brand-icon" aria-hidden="true">♠</span>
+        <span class="brand-word"><span>PORTAL MASTER OF GAMES</span><strong>The Wolf's Deck</strong></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#the-deck">The spiral</a>
+        <a href="#games">Play a game</a>
+        <a href="https://pmog.creatorpromote.com/gifs" target="_blank" rel="noopener noreferrer">My emotes ↗</a>
+        <a class="nav-home" href="https://pmog.creatorpromote.com/" target="_blank" rel="noopener noreferrer">PMOG home ↗</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="the-deck" aria-labelledby="heroTitle">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="overline"><span class="star-mark">✦</span> A little magic. A little mischief.</p>
+          <h1 id="heroTitle">The Wolf's <em>Deck.</em></h1>
+          <p class="lead">A trail of cards, a twist of fate, and one wolf who insists the deck is <em>probably</em> fair.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#games">Test your luck <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#about">Meet the deck</a>
+          </div>
+          <p class="hero-footnote">No wagers. No prizes. Just little games and questionable wolf magic.</p>
+        </div>
+
+        <div class="spiral-frame" aria-label="An animated round spiral of red and purple playing cards">
+          <div class="spiral-glass" id="spiralGlass">
+            <div class="spiral-aurora" aria-hidden="true"></div>
+            <div class="spiral-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="spiral-core" aria-hidden="true">✦</div>
+            <div class="spark-field" id="sparkField" aria-hidden="true"></div>
+            <div id="cardStage" class="card-stage" aria-hidden="true"></div>
+            <div id="extraStage" class="extra-stage" aria-hidden="true"></div>
+          </div>
+          <div class="deck-controls" aria-label="Spiral animation controls">
+            <span class="tiny-label">THE ENDLESS SPIRAL</span>
+            <div class="control-actions">
+              <button id="toggleMotion" type="button" aria-pressed="false" aria-label="Pause spiral animation">Ⅱ Pause</button>
+              <button id="reshuffle" type="button">↻ Shuffle</button>
+              <label class="speed-label" for="speedInput">Speed <input id="speedInput" type="range" min="0.5" max="1.75" step="0.25" value="1"><span id="speedDisplay">1×</span></label>
+            </div>
+          </div>
+          <p class="sr-only" id="loadStatus" aria-live="polite">Loading PMOG emotes.</p>
+        </div>
+      </section>
+
+      <section class="suit-strip" id="about" aria-label="The four suits">
+        <p><span class="mini-label">FOUR SUITS · ONE ENDLESS HAND</span> Every card hides a different little mood.</p>
+        <div class="suit-list">
+          <span><b class="red">♥</b> Affection</span><span><b class="violet">♠</b> Enchantment</span><span><b class="red">♦</b> Sparkle</span><span><b class="violet">♣</b> Laughter</span>
+        </div>
+      </section>
+
+      <section class="game-section" id="games" aria-labelledby="gameHeading">
+        <div class="section-heading">
+          <p class="overline"><span class="star-mark">✧</span> Welcome to the wolf's little table</p>
+          <h2 id="gameHeading">Care to <em>test your luck?</em></h2>
+          <p>Choose a game. The cards are random, the wolf is dramatic, and nobody loses anything except perhaps their dignity.</p>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-panel guess-panel" aria-labelledby="guessHeading">
+            <div class="game-top"><span class="game-number">GAME 01</span><span class="game-icon" aria-hidden="true">♠</span></div>
+            <h3 id="guessHeading">Guess the suit</h3>
+            <p>Which suit is hiding behind the next card? Pick one and find out.</p>
+            <div class="game-display guess-display">
+              <div class="reveal-card is-back" id="guessCard" aria-hidden="true">
+                <div class="reveal-back"><span>✦</span><small>THE WOLF'S DECK</small></div>
+                <div class="reveal-front"><span id="guessSymbol">♥</span><small id="guessSuitName">HEARTS</small></div>
+              </div>
+              <div class="result-copy" role="status" aria-live="polite" id="guessMessage">Make your prediction, traveler.</div>
+            </div>
+            <div class="suit-picks" role="group" aria-label="Choose a suit">
+              <button type="button" class="pick red" data-suit="heart" aria-label="Guess hearts">♥</button>
+              <button type="button" class="pick violet" data-suit="spade" aria-label="Guess spades">♠</button>
+              <button type="button" class="pick red" data-suit="diamond" aria-label="Guess diamonds">♦</button>
+              <button type="button" class="pick violet" data-suit="club" aria-label="Guess clubs">♣</button>
+            </div>
+            <div class="game-bottom"><span>Correct <strong id="guessWins">0</strong> / <strong id="guessPlays">0</strong></span><span>Streak <strong id="guessStreak">0</strong></span><button type="button" id="guessReset" class="text-button">Reset ↺</button></div>
+          </article>
+
+          <article class="game-panel hilo-panel" aria-labelledby="hiloHeading">
+            <div class="game-top"><span class="game-number">GAME 02</span><span class="game-icon" aria-hidden="true">♦</span></div>
+            <h3 id="hiloHeading">Higher or lower?</h3>
+            <p>Will the next number rise or fall? Ties are a draw; try to build a streak.</p>
+            <div class="hilo-stage">
+              <div class="number-card" id="currentNumberCard" aria-label="Current card"><span id="currentNumber">7</span><small>THE CURRENT CARD</small></div>
+              <div class="versus" aria-hidden="true">→</div>
+              <div class="number-card next-card is-hidden" id="nextNumberCard" aria-label="Next card"><span id="nextNumber">?</span><small>THE NEXT CARD</small></div>
+            </div>
+            <div class="hilo-picks" role="group" aria-label="Predict next number"><button type="button" id="higherBtn" class="button small primary">↑ Higher</button><button type="button" id="lowerBtn" class="button small secondary">↓ Lower</button></div>
+            <div class="result-copy" id="hiloMessage" role="status" aria-live="polite">The deck is waiting for your call.</div>
+            <div class="game-bottom"><span>Best streak <strong id="hiloBest">0</strong></span><span>Current streak <strong id="hiloStreak">0</strong></span><button type="button" class="text-button" id="hiloReset">Restart ↺</button></div>
+          </article>
+
+          <article class="game-panel fortune-panel" aria-labelledby="fortuneHeading">
+            <div class="game-top"><span class="game-number">GAME 03</span><span class="game-icon" aria-hidden="true">✦</span></div>
+            <h3 id="fortuneHeading">A little fortune</h3>
+            <p>Ask the cards for a nudge. They might be wise. They might be hungry.</p>
+            <div class="fortune-area"><span class="fortune-sigil" id="fortuneSigil" aria-hidden="true">✧</span><blockquote id="fortuneMessage" aria-live="polite">“An unopened card is a story that hasn't learned your name.”</blockquote></div>
+            <button class="button primary fortune-draw" type="button" id="fortuneDraw">✦ Reveal my fortune</button>
+            <div class="game-bottom"><span>Every draw is just for fun.</span><button type="button" class="text-button" id="fortuneCopy" disabled>Copy fortune ↗</button></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing" aria-label="More from PMOG">
+        <div class="closing-mark" aria-hidden="true">♣ <span>♥</span> ♠</div>
+        <div><p class="overline">The story doesn't end here</p><h2>There's more <em>behind the cards.</em></h2><p>See the wolf's original GIF emotes, stories, and other little creations.</p></div>
+        <a class="button secondary" href="https://pmog.creatorpromote.com/gifs" target="_blank" rel="noopener noreferrer">Explore my emotes ↗</a>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© 2026 Portal Master Of Games · The Wolf's Deck</span><a href="https://pmog.creatorpromote.com/" target="_blank" rel="noopener noreferrer">Return to PMOG ↗</a></footer>
+  </div>
+</body>
+</html>
