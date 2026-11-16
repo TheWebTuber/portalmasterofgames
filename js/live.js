@@ -1,7 +1,5 @@
-// Replace these with your API key and channel ID
-const API_KEY = "AIzaSyBvpCwNhDR-PvJ02tJ2iJDekFc3R9-g5V0";
-const CHANNEL_ID = "UCdOJvhjojFe3Z0yKeGEIERA"; // e.g., UCxxxxxx
-
+// Statistics and live observations from the central CreatorPromote Hub.
+(() => {
 const subscribersEl = document.getElementById("subscribers");
 const viewsEl = document.getElementById("views");
 const videosEl = document.getElementById("videos");
@@ -14,6 +12,7 @@ const goalText = document.getElementById("goalText");
 let lastStats = { subs: 0, views: 0, videos: 0 };
 
 function animateValue(el, start, end, duration = 800) {
+  if (!el) return;
   const range = end - start;
 
   if (range === 0) {
@@ -67,51 +66,48 @@ function updateGoal(subs) {
   goalText.textContent = `${subs.toLocaleString()} / ${goal.toLocaleString()}`;
 }
 
-async function fetchStats() {
-  try {
-    const statsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`;
-    const statsResponse = await fetch(statsUrl);
-    const statsData = await statsResponse.json();
 
-    if (!statsData.items || statsData.items.length === 0) {
-      liveEl.textContent = "Channel error";
-      return;
-    }
-
-    const stats = statsData.items[0].statistics;
-
-    const subs = Number(stats.subscriberCount || 0);
-    const views = Number(stats.viewCount || 0);
-    const videos = Number(stats.videoCount || 0);
-
-    animateValue(subscribersEl, lastStats.subs, subs);
-    animateValue(viewsEl, lastStats.views, views);
-    animateValue(videosEl, lastStats.videos, videos);
-
-    updateGoal(subs);
-
-    lastStats = { subs, views, videos };
-
-    const liveUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&eventType=live&type=video&key=${API_KEY}`;
-    const liveResponse = await fetch(liveUrl);
-    const liveData = await liveResponse.json();
-
-    const isLive = liveData.items && liveData.items.length > 0;
-
-    liveEl.textContent = isLive ? "Streaming Live" : "Not Livestreaming";
-
-    updatedEl.textContent = new Date().toLocaleTimeString("nl-NL", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } catch (error) {
-    console.error("Error fetching YouTube data:", error);
-    liveEl.textContent = "Error";
+const config = {hubUrl:'https://api.creatorpromote.com',slug:'portalmasterofgames',channelId:'UCdOJvhjojFe3Z0yKeGEIERA'};
+const adapterUrl = new URL('./hub-feed.mjs', document.currentScript.src).href;
+let statisticsSignature = '';
+function unavailable() {
+  liveEl.textContent = 'Live status unavailable';
+  updatedEl.textContent = statisticsSignature ? 'Saved data · refresh unavailable' : 'Feed unavailable';
+  if (!statisticsSignature) {
+    subscribersEl.textContent = viewsEl.textContent = videosEl.textContent = '—';
+    goalText.textContent = 'Unavailable'; goalFill.style.width = '0%';
   }
 }
-
 updateClock();
 setInterval(updateClock, 1000);
+import(adapterUrl).then(({watchCreatorFeed}) => {
+  watchCreatorFeed(config, ({data,source}) => {
+    const stats = data.channel.statistics || {};
+    const nextSignature = JSON.stringify(stats);
+    if (statisticsSignature !== nextSignature) {
+      const fields = [['subscriberCount','subs',subscribersEl],['viewCount','views',viewsEl],['videoCount','videos',videosEl]];
+      for (const [field,key,element] of fields) {
+        const number = stats[field] == null || stats[field] === '' ? NaN : Number(stats[field]);
+        if (Number.isFinite(number) && number >= 0 && !(key === 'subs' && stats.hiddenSubscriberCount)) {
+          animateValue(element, lastStats[key], number); lastStats[key] = number;
+          if (key === 'subs') updateGoal(number);
+        } else {
+          element.textContent = '—';
+          if (key === 'subs') {goalText.textContent = 'Unavailable'; goalFill.style.width = '0%';}
+        }
+      }
+      statisticsSignature = nextSignature;
+    }
+    // A recent uploads scan cannot prove a channel is offline.
+    const live = data.freshness.liveFresh && data.live?.snippet?.liveBroadcastContent === 'live' &&
+      data.live.liveStreamingDetails?.actualStartTime && !data.live.liveStreamingDetails?.actualEndTime;
+    liveEl.textContent = live ? 'Streaming Live' : data.freshness.liveFresh ? 'No live stream detected' : 'Live status unavailable';
+    const observed = data.sections?.channel?.updatedAt || data.updatedAt;
+    const cached = source === 'fallback' || data.sections?.channel?.status === 'cached';
+    updatedEl.textContent = (cached ? 'Saved · ' : '') + new Date(observed).toLocaleString('nl-NL', {
+      day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'
+    });
+  }, unavailable);
+}).catch(unavailable);
 
-fetchStats();
-setInterval(fetchStats, 60000);
+})();

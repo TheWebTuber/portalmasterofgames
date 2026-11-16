@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "slug": "portalmasterofgames",
+  "updatedAt": "2026-11-16T12:00:00.000Z",
+  "channel": {
+    "id": "UCdOJvhjojFe3Z0yKeGEIERA",
+    "snippet": {
+      "title": "Synthetic fixture — not channel observations"
+    },
+    "statistics": {
+      "subscriberCount": "1234",
+      "viewCount": "56789",
+      "videoCount": "42"
+    }
+  },
+  "uploads": [
+    {
+      "id": "abcdefghijk",
+      "snippet": {
+        "title": "Synthetic test stream",
+        "publishedAt": "2026-11-16T12:00:00.000Z",
+        "liveBroadcastContent": "none"
+      },
+      "status": {
+        "privacyStatus": "public"
+      },
+      "liveStreamingDetails": {
+        "actualStartTime": "2026-11-16T12:00:00.000Z",
+        "actualEndTime": "2026-11-16T12:00:00.000Z"
+      }
+    }
+  ],
+  "replays": [
+    {
+      "id": "abcdefghijk",
+      "snippet": {
+        "title": "Synthetic test stream",
+        "publishedAt": "2026-11-16T12:00:00.000Z",
+        "liveBroadcastContent": "none"
+      },
+      "status": {
+        "privacyStatus": "public"
+      },
+      "liveStreamingDetails": {
+        "actualStartTime": "2026-11-16T12:00:00.000Z",
+        "actualEndTime": "2026-11-16T12:00:00.000Z"
+      }
+    }
+  ],
+  "catalog": [
+    {
+      "id": "abcdefghijk",
+      "snippet": {
+        "title": "Synthetic test stream",
+        "publishedAt": "2026-11-16T12:00:00.000Z",
+        "liveBroadcastContent": "none"
+      },
+      "status": {
+        "privacyStatus": "public"
+      },
+      "liveStreamingDetails": {
+        "actualStartTime": "2026-11-16T12:00:00.000Z",
+        "actualEndTime": "2026-11-16T12:00:00.000Z"
+      }
+    }
+  ],
+  "latestVideos": [
+    {
+      "id": "abcdefghijk",
+      "title": "Synthetic test stream"
+    }
+  ],
+  "latestLivestreams": [
+    {
+      "id": "abcdefghijk",
+      "title": "Synthetic test stream",
+      "startedAt": "2026-11-16T12:00:00.000Z"
+    }
+  ],
+  "latestReplays": [],
+  "collabs": [],
+  "live": null,
+  "liveChecked": false,
+  "sections": {
+    "videos": {
+      "status": "fresh",
+      "updatedAt": "2026-11-16T12:00:00.000Z"
+    },
+    "channel": {
+      "status": "fresh",
+      "updatedAt": "2026-11-16T12:00:00.000Z"
+    }
+  },
+  "playlists": []
+}
