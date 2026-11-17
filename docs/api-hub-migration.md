@@ -1,4 +1,12 @@
-# Local API Hub migration — 16 November 2026
+# PMOG API Hub integration
+
+## Phase 4 — 17 November 2026
+
+The Hub feed is now deployed at https://api.creatorpromote.com/data/portalmasterofgames.json and returns HTTP 200 for UCdOJvhjojFe3Z0yKeGEIERA. Workflow run 44176053996 succeeded. All four pre-existing feeds remain available.
+
+The existing standalone integration required no runtime changes. A real-browser check displayed the published 279 subscribers, 79,493 views and 397 videos, with milestone progress 279 / 500 and no false LIVE indication. The shared client was also tested directly against the published feed. All eight existing tests and JavaScript syntax checks pass. The changes below describe the historical Phase 3 preparation; its missing-feed deployment gate is resolved for PMOG.
+
+## Phase 3 history — 16 November 2026
 
 No commit, push, publication or deployment was performed.
 
