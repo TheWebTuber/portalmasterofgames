@@ -15,7 +15,7 @@
 .shelf {scroll-margin-top:6rem}
 .shelf header {display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1rem}
 .page-content .shelf h2 {font:600 clamp(1.7rem,3vw,2.6rem)/1.15 Georgia,serif;margin:0}
-.shelf header a,.archive-picks a {color:var(--gold)}
+.shelf header a {color:var(--gold)}
 .media-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
 .media-card {display:grid;align-content:start;gap:.55rem;color:var(--text);text-decoration:none;min-width:0}
 .media-card strong {font-size:1.06rem;line-height:1.35;overflow-wrap:anywhere}
@@ -25,8 +25,15 @@
 .poster b {position:absolute;bottom:.5rem;right:.5rem;color:white;background:#151018e8;border-radius:4px;padding:.18rem .48rem;font:600 .8rem/1.4 system-ui}
 .poster b.live {background:#b12138}
 .media-card small,.media-grid p {color:var(--muted)}
-.archive-picks {border-block:1px solid var(--line);padding:1rem 0}
-.archive-picks summary {cursor:pointer;color:var(--gold)}
+@media (min-width: 641px) {
+  .archive-hero .banner { align-self: stretch; }
+  .archive-hero .motion-toggle {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    margin: 0;
+  }
+}
 @media(max-width:850px){.media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.archive-hero{grid-template-columns:1fr}.archive-hero .banner{min-height:155px}.archive-hero .slider{top:0;width:64px;height:85px}.media-grid{grid-template-columns:1fr}.archive-hero .motion-toggle{padding:4px 12px;min-height:34px}.shelf header a{font-size:.85rem}}
 @media(prefers-reduced-motion:reduce){.archive-hero .banner{display:none}.archive-hero{grid-template-columns:1fr}}
