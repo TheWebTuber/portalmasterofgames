@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avatar Gallery | Portal Master Of Games</title>
+    <meta name="description" content="Rotate PMOG’s 3D avatars and try different poses.">
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/avatars.css">
+    <script type="importmap">
+      { "imports": { "three": "/assets/avatar-viewer/three.module.min.js" } }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="/" aria-label="Portal Master Of Games home">
+          <img
+            src="/logo.png"
+            alt=""
+            width="44"
+            height="44"
+            decoding="async"
+            loading="lazy"
+          />
+          <span>PMOG<small>Portal Master Of Games</small> </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          hidden
+        >
+          Menu
+        </button>
+        <nav id="site-navigation" class="topnav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/content">My Content</a>
+          <a href="/creations">Creations</a>
+          <a href="/links">Links</a>
+          <a href="/live">Channel Stats</a>
+          <a
+            href="https://www.youtube.com/@PMOG"
+            target="_blank"
+            rel="noopener noreferrer"
+            >YouTube</a
+          >
+          <a
+            class="support-link"
+            href="https://www.paypal.com/donate/?hosted_button_id=SMU6EYH4K844N"
+            >Support</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main-content" class="avatar-page">
+      <a href="/creations">Back to Creations</a>
+      <h1>Avatar Gallery</h1>
+      <div class="avatar-workspace">
+        <div class="avatar-stage">
+          <canvas id="stage" aria-label="Interactive 3D avatar" hidden></canvas>
+          <p id="stage-message">Choose an avatar to see it in 3D.</p>
+        </div>
+        <section class="avatar-tools" aria-label="Avatar controls">
+          <label for="avatar">Model</label>
+          <select id="avatar" disabled><option value="">No models available</option></select>
+          <fieldset id="poses" disabled>
+            <legend>Pose</legend>
+            <div class="buttons">
+              <button type="button" data-pose="stand" aria-pressed="true">Stand</button>
+              <button type="button" data-pose="sit" aria-pressed="false">Sit</button>
+              <button type="button" data-pose="hips" aria-pressed="false">Hands on hips</button>
+            </div>
+          </fieldset>
+          <fieldset id="view" disabled>
+            <legend>View</legend>
+            <div class="buttons">
+              <button type="button" data-view="left" aria-label="Rotate left">↶ Left</button>
+              <button type="button" data-view="right" aria-label="Rotate right">Right ↷</button>
+              <button type="button" data-view="reset">Reset view</button>
+            </div>
+            <p>Drag to rotate. Hold Shift and left-drag to pan, or drag with two fingers on touchscreens. Scroll or pinch to zoom.</p>
+          </fieldset>
+          <details id="preview"><summary>Preview local models</summary>
+            <p>Choose one or more VRM files. They stay in your browser.</p>
+            <label for="files">VRM files</label>
+            <input id="files" type="file" accept=".vrm" multiple>
+          </details>
+          <p id="status" role="status" aria-live="polite"></p>
+          <noscript>Enable JavaScript to use the 3D viewer.</noscript>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <a href="/">Portal Master Of Games</a>
+      <span>Gaming · creativity · community</span>
+    </footer>
+    <script src="/js/site.js" defer></script>
+    <script type="module" src="/js/avatars.mjs"></script>
+  </body>
+</html>

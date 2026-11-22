@@ -1,0 +1,36 @@
+.avatar-page {
+  width: min(76rem, calc(100% - 2rem));
+  margin: 2rem auto 4rem;
+}
+.avatar-page h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); line-height: 1.1; margin: .45em 0; }
+.avatar-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem); gap: 1rem; }
+.avatar-stage, .avatar-tools {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);
+}
+.avatar-stage {
+  position: relative; min-width: 0; height: clamp(25rem, 66vh, 46rem); overflow: hidden;
+  background: radial-gradient(ellipse at 50% 65%, #39303c, #141117 72%);
+}
+.avatar-stage canvas { display: block; width: 100%; height: 100%; }
+.avatar-stage p {
+  position: absolute; inset: 0; display: grid; place-content: center; margin: 0;
+  padding: 2rem; text-align: center; color: var(--muted); pointer-events: none;
+}
+.avatar-stage [hidden] { display: none; }
+.avatar-tools { align-self: start; padding: 1.4rem; }
+.avatar-tools label, .avatar-tools legend { display: block; font-weight: 700; margin-bottom: .45rem; }
+.avatar-tools fieldset { padding: 0; border: 0; margin: 1.4rem 0 0; }
+.avatar-tools select, .avatar-tools button, .avatar-tools input::file-selector-button {
+  border: 1px solid var(--line); border-radius: .65rem; background: var(--panel-raised);
+  padding: .45rem .75rem; color: var(--text); min-height: 44px;
+}
+.avatar-tools select, .avatar-tools input { width: 100%; min-width: 0; }
+.avatar-tools button[aria-pressed="true"] { background: var(--gold); color: var(--bg); }
+.avatar-tools .buttons { display: flex; gap: .45rem; flex-wrap: wrap; }
+.avatar-tools p { color: var(--muted); margin: .65rem 0; font-size: .95rem; }
+.avatar-tools details { border-top: 1px solid var(--line); padding-top: 1rem; margin-top: 1.4rem; }
+.avatar-tools summary { cursor: pointer; color: var(--gold); }
+@media (max-width: 700px) {
+  .avatar-workspace { grid-template-columns: minmax(0, 1fr); }
+  .avatar-stage { height: clamp(18rem, 50svh, 32rem); }
+}
